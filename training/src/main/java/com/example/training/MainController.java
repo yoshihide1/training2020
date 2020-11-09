@@ -17,10 +17,12 @@ public class MainController {
 		return "cart";
 	}
 
-	@GetMapping("/cart")
+	@GetMapping("/product")
 	public String product(Model model) {
 		//model.addAttribute("message", "Hello");
-		return "puroduct";
+		/* msgとしてdescriptionを渡す。
+		 */
+		return "product";
 	}
 
 }
