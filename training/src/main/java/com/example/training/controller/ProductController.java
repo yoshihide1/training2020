@@ -20,6 +20,6 @@ public class ProductController {
 	public String list(Model model) {
 		var products = productRepository.findAll();
 		model.addAttribute("products", products);
-		return "home";
+		return "index";
 	}
 }
