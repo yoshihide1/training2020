@@ -1,6 +1,6 @@
 use training;
 
-load data infile 'C:/eclipse/remote_git/training2020/training/db/productAll.csv'
+load data  local infile "./product.csv"
 into table product
 fields terminated by ',' enclosed by'"'
 lines terminated by '\r\n'

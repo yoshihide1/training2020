@@ -10,6 +10,6 @@ echo ------- finish--------
 
 echo -------create table--------
 
-mysql --defaults-extra-file=root.conf < insert_product.txt
+mysql --defaults-extra-file=root.conf --enable-local-infile < ./insert_product.txt
 
 echo ------- finish--------
