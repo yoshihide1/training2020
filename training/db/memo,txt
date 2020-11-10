@@ -13,5 +13,9 @@ echo -------create table--------
 
 mysql --defaults-extra-file=root.conf < insert_product.txt
 
+<<<<<<< HEAD
 echo ------- finish--------
 
+=======
+echo ------- finish--------
+>>>>>>> e5c9356... add database and change .sh
