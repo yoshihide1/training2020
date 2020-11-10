@@ -1,0 +1,8 @@
+C:/eclipse/remote_git/training2020/training/db/
+
+
+
+
+script_dir= $(cd $(dirname $0); pwd)
+
+echo $script_dir

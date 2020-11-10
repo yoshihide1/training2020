@@ -1,0 +1,7 @@
+use training;
+
+load data infile 'C:/eclipse/remote_git/training2020/training/db/productAll.csv'
+into table product
+fields terminated by ',' enclosed by'"'
+lines terminated by '\r\n'
+ignore 1 lines;
