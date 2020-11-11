@@ -20,13 +20,13 @@ public class MainController {
 		return "index";
 	}
 
-//	@GetMapping("/cart")
-//	public String cart(Model model) {
-//		// model.addAttribute("message", "Hello");
-//
-//
-//		return "cart";
-//	}
+	@GetMapping("/cart")
+	public String cart(Model model) {
+		// model.addAttribute("message", "Hello");
+
+
+		return "cart";
+	}
 
 	@GetMapping("/product")
 	public String product(Model model) {
