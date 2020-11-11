@@ -1,14 +1,21 @@
 package com.example.training.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.example.training.repository.ProductRepository;
 
 @Controller
 public class MainController {
-	@GetMapping("/index")
+	@Autowired
+	private ProductRepository productRepository;
+
+	@GetMapping("/")
 	public String index(Model model) {
+		var products = productRepository.findAll();
+		model.addAttribute("products", products);
 		// model.addAttribute("message", "Hello");
 		return "index";
 	}
