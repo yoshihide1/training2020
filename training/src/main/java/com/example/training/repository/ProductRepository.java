@@ -11,6 +11,8 @@ public interface ProductRepository {
 
 	Optional<Product> findAll();
 
+	Optional<Product> findId(int id);
+
 //	@Select("select * from PRODUCT")
 //	Optional<Product> findAll();
 //

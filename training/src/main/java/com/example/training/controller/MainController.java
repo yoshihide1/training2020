@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+
 @Controller
 public class MainController {
 	@GetMapping("/index")
@@ -12,18 +13,17 @@ public class MainController {
 		return "index";
 	}
 
-	@GetMapping("/cart")
-	public String cart(Model model) {
-		// model.addAttribute("message", "Hello");
-		return "cart";
-	}
+//	@GetMapping("/cart")
+//	public String cart(Model model) {
+//		// model.addAttribute("message", "Hello");
+//
+//
+//		return "cart";
+//	}
 
 	@GetMapping("/product")
 	public String product(Model model) {
-		// model.addAttribute("message", "Hello");
-		/*
-		 * msgとしてdescriptionを渡す。
-		 */
+
 		return "product";
 	}
 
