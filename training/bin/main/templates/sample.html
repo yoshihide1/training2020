@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>hello</h1>
+    <table>
+        <tr>
+            <th>名前</th>
+            <th>値段</th>
+            <th>説明</th>
+        </tr>
+        <tr th:each="item:${products}">
+            <td th:text="${item.name}"></td>
+            <td th:text="${item.price}"></td>
+            <td th:text="${item.description}"></td>
+        </tr>
+    </table>
+</body>
+
+</html>
