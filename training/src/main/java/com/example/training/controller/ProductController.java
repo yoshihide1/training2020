@@ -9,17 +9,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.example.training.repository.ProductRepository;
 
 @Controller
-@RequestMapping("product")
+@RequestMapping("/product")
 //@SessionAttributes(value = { "cartItem" })
 public class ProductController {
 
 	@Autowired
 	private ProductRepository productRepository;
 
-	@GetMapping("/list")
-	public String list(Model model) {
+	@GetMapping("/sample")
+	public String sample(Model model) {
+		System.out.println(111);
 		var products = productRepository.findAll();
 		model.addAttribute("products", products);
-		return "index";
+		return "sample";
 	}
+
+//	@GetMapping("/list")
+//	public String list(Model model) {
+//		var products = productRepository.findAll();
+//		model.addAttribute("products", products);
+//		return "index";
+//	}
 }
