@@ -2,16 +2,27 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
+
 <mapper namespace="com.example.training.repository.ProductRepository">
 
+<<<<<<< HEAD
 <select id="findAll" resultType="com.example.training.enity.Product">
+=======
+<select id="findAll" parameterType="string" resultType="com.example.training.enity.Product">
+>>>>>>> 15b86a1... java 14
 select
  *
 from
  PRODUCT;
 </select>
 
+
+<select id="findId" resultType="com.example.training.enity.Product">
+select *
+from
+ PRODUCT
+where
+ id = ${id}
+</select>
+
 </mapper>
-  
-  
