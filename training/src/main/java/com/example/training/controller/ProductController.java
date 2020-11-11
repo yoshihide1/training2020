@@ -16,18 +16,18 @@ public class ProductController {
 	@Autowired
 	private ProductRepository productRepository;
 
-	@GetMapping("/sample")
-	public String sample(Model model) {
-		System.out.println(111);
+//	@GetMapping("/sample")
+//	public String sample(Model model) {
+//		System.out.println(111);
+//		var products = productRepository.findAll();
+//		model.addAttribute("products", products);
+//		return "sample";
+//	}
+
+	@GetMapping("/list")
+	public String list(Model model) {
 		var products = productRepository.findAll();
 		model.addAttribute("products", products);
 		return "sample";
 	}
-
-//	@GetMapping("/list")
-//	public String list(Model model) {
-//		var products = productRepository.findAll();
-//		model.addAttribute("products", products);
-//		return "index";
-//	}
 }
