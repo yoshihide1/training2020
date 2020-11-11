@@ -20,10 +20,21 @@ public class MainController {
 
 	@GetMapping("/product")
 	public String product(Model model) {
-		//model.addAttribute("message", "Hello");
-		/* msgとしてdescriptionを渡す。
+		// model.addAttribute("message", "Hello");
+		/*
+		 * msgとしてdescriptionを渡す。
 		 */
 		return "product";
+	}
+
+	@GetMapping("/address")
+	public String address(Model model) {
+		return "address";
+	}
+
+	@GetMapping("/complete")
+	public String complete(Model model) {
+		return "complete";
 	}
 
 }
