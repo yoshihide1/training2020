@@ -16,7 +16,6 @@ public class MainController {
 	public String index(Model model) {
 		var products = productRepository.findAll();
 		model.addAttribute("products", products);
-		// model.addAttribute("message", "Hello");
 		return "index";
 	}
 
