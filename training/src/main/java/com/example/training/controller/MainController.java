@@ -4,7 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
+import com.example.training.enity.Address;
 import com.example.training.repository.ProductRepository;
 
 @Controller
@@ -22,26 +25,29 @@ public class MainController {
 	@GetMapping("/cart")
 	public String cart(Model model) {
 		// model.addAttribute("message", "Hello");
+
+
 		return "cart";
 	}
 
 	@GetMapping("/product")
 	public String product(Model model) {
-		// model.addAttribute("message", "Hello");
-		/*
-		 * msgとしてdescriptionを渡す。
-		 */
+
 		return "product";
 	}
 
-	@GetMapping("/address")
+	@GetMapping("/order/detail")
 	public String address(Model model) {
-		return "address";
+		model.addAttribute("formModel", new Address());
+		return "order/detail";
 	}
 
-	@GetMapping("/complete")
-	public String complete(Model model) {
-		return "complete";
+	@PostMapping("/complete")
+	public String complete(
+			@ModelAttribute("formModel") Address form,
+			Model model) {
+		model.addAttribute("form", form);
+		return "order/complete";
 	}
 
 }
