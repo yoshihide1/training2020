@@ -35,10 +35,10 @@ public class MainController {
 		return "product";
 	}
 
-	@GetMapping("/address")
+	@GetMapping("/order/detail")
 	public String address(Model model) {
 		model.addAttribute("formModel", new Address());
-		return "address";
+		return "order/detail";
 	}
 
 	@GetMapping("/complete")
@@ -46,7 +46,7 @@ public class MainController {
 			@ModelAttribute("formModel") Address form,
 			Model model) {
 		model.addAttribute("form", form);
-		return "complete";
+		return "order/complete";
 	}
 
 }
