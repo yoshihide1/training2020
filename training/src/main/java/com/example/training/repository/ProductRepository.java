@@ -12,12 +12,6 @@ public interface ProductRepository {
 
 	public List<Product> findAll();
 
-	Optional<Product> findId(int id);
+	public Optional<Product> findId(int id);
 
-//	@Select("select * from PRODUCT")
-//	Optional<Product> findAll();
-//
-//	@Select("insert into product(category_id, name, price, image_path, description)"
-//			+ " values (#{categoryId}, #{name}, #{price}, #{imagePath}, #{description})")
-//	Optional<Product> find();
 }
