@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.training.enity.Address;
 import com.example.training.repository.ProductRepository;
@@ -42,7 +43,7 @@ public class MainController {
 		return "order/detail";
 	}
 
-	@GetMapping("/complete")
+	@PostMapping("/complete")
 	public String complete(
 			@ModelAttribute("formModel") Address form,
 			Model model) {
