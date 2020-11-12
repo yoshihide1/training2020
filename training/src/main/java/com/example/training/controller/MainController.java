@@ -4,7 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
+import com.example.training.enity.Address;
 import com.example.training.repository.ProductRepository;
 
 @Controller
@@ -36,12 +38,15 @@ public class MainController {
 
 	@GetMapping("/address")
 	public String address(Model model) {
-//		model.addAttribute("Address", new Address());
+		model.addAttribute("formModel", new Address());
 		return "address";
 	}
 
 	@GetMapping("/complete")
-	public String complete(Model model) {
+	public String complete(
+			@ModelAttribute("formModel") Address form,
+			Model model) {
+		model.addAttribute("form", form);
 		return "complete";
 	}
 

@@ -11,5 +11,6 @@ public class Address {
 	private String homeAddress;
 	private String lastName;
 	private String firstName;
+	private String gender = "male";
 	private String phone;
 }
