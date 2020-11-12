@@ -35,6 +35,7 @@ public class MainController {
 
 	@GetMapping("/address")
 	public String address(Model model) {
+		model.addAttribute("address", "formModel");
 		return "address";
 	}
 
