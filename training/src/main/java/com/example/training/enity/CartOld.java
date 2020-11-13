@@ -1,22 +1,16 @@
 package com.example.training.enity;
 
+import java.io.Serializable;
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
-public class Product {
-	public Product(int id, String name) {
-		this.name = name;
-		this.id = id;
-	}
+public class CartOld implements Serializable {
 
+	private static final long serialVersionUID = 1L;
 	private int id;
 	private String name;
 	private int price;
 	private String description;
 	private String image_path;
-
 }
-
