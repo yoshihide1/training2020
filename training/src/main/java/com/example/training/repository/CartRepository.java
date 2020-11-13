@@ -2,9 +2,9 @@ package com.example.training.repository;
 
 import java.util.List;
 
-import com.example.training.enity.Cart;
+import com.example.training.enity.CartOld2;
 
 public interface CartRepository {
 
-	public List<Cart> findId(int id);
+	public List<CartOld2> findId(int id);
 }
