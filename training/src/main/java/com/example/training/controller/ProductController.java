@@ -16,11 +16,8 @@ public class ProductController {
 	@Autowired
 	private ProductRepository productRepository;
 
-	@GetMapping("/list")
-	public String list(Model model) {
-
 	@GetMapping("detail/{id}")
-	public String detail (@PathVariable("id") int id, Model model) {
+	public String detail(@PathVariable("id") int id, Model model) {
 		var product = productRepository.findId(id).orElseThrow(() -> new IllegalArgumentException());
 		model.addAttribute("product", product);
 		return "product/detail";

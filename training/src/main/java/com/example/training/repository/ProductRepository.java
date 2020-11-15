@@ -1,6 +1,7 @@
 package com.example.training.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.apache.ibatis.annotations.Mapper;
 
@@ -10,9 +11,10 @@ import com.example.training.enity.Product;
 public interface ProductRepository {
 
 	public List<Product> findAll();
-	
+
 	Optional<Product> findId(int id);
 
+	Optional<Product> findIdList(int id[]);
 //	@Select("select * from PRODUCT")
 //	Optional<Product> findAll();
 //

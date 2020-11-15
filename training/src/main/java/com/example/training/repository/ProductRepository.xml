@@ -3,22 +3,34 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.example.training.repository.ProductRepository">
+<mapper
+	namespace="com.example.training.repository.ProductRepository">
 
-<select id="findAll" parameterType="string" resultType="com.example.training.enity.Product">
-select
- *
-from
- PRODUCT;
-</select>
+	<select id="findAll" parameterType="string"
+		resultType="com.example.training.enity.Product">
+		select
+		*
+		from
+		PRODUCT;
+	</select>
 
+	<select id="findId"
+		resultType="com.example.training.enity.Product">
+		select *
+		from
+		PRODUCT
+		where
+		id = ${id}
+	</select>
+	
+	<select id="findIdList" resultType="string">
+		select
+		*
+		from
+		PRODUCT
+		where
+		
 
-<select id="findId" resultType="com.example.training.enity.Product">
-select *
-from
- PRODUCT
-where
- id = ${id}
-</select>
+	</select>
 
 </mapper>

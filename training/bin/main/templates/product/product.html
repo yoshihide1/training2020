@@ -7,10 +7,12 @@
 <meta charset="utf-8" />
 <link rel="stylesheet"
 	th:href="@{/webjars/bootstrap/4.5.2/css/bootstrap.min.css}">
+</head>
+
 <body>
 	<div th:replace="header"></div>
 
-	<div>
+	<div th:object="${data}">
 		<div class="container">
 			<div class="row">
 				<div class="col">画像</div>
@@ -18,29 +20,19 @@
 				<div class="col">
 					<table>
 						<tr>
+							<td>名前</td>
 							<!-- 名前部には th:text= "*{name}"を持ってくる -->
-							<td th:text="*{product.name}">名前</td>
 						</tr>
 						<tr>
+							<td>単価</td>
 							<!-- 単価部には th:text= "*{price}"を持ってくる -->
-							<td th:text="*{product.price}">単価</td>
 						</tr>
 						<tr>
 							<form action="/cart">
-<<<<<<< HEAD:training/bin/main/templates/product/product.html
 							<td>数量</td>
-<<<<<<< HEAD
 							<td><input type="hidden" name="" id=""></td>
-=======
->>>>>>> e5c9356... add database and change .sh
 							<td><input type="number" min="0"></td>
 							<td><input type="submit" value="送信"></td>
-=======
-								<td>数量</td>
-								<td><input type="hidden" name="" id=""></td>
-								<td><input type="number" min="0"></td>
-								<td><input type="submit" value="送信"></td>
->>>>>>> 15b86a1... java 14:training/bin/main/templates/product/detail.html
 							</form>
 						</tr>
 					</table>
@@ -49,7 +41,7 @@
 		</div>
 		<br> <br> <br>
 		<div>
-			<p th:text="|*{product.description}を記入する|"></p>
+			<p th:text="|$[description}を記入する]|"></p>
 		</div>
 	</div>
 </body>

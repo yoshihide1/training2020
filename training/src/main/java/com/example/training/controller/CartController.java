@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.example.training.repository.ProductRepository;
+
 /**
  * @author tsukamoto
  *
@@ -22,8 +24,8 @@ public class CartController {
 	@Autowired
 	protected HttpSession session;
 
-//	@Autowired
-//	private CartRepository cartRepository;
+	@Autowired
+	private ProductRepository productRepository;
 
 	/**
 	 * @param id
@@ -40,12 +42,12 @@ public class CartController {
 
 	/**
 	 * @param id
-	 * @return カート内の商品の削除
+	 * @return カート内の商品の削除 //
 	 */
-	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
-	public String delete(@PathVariable int id) {
-
-	}
+//	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+//	public String delete(@PathVariable int id) {
+//
+//	}
 
 	/**
 	 * 商品一覧画面の表示
@@ -53,13 +55,8 @@ public class CartController {
 	 */
 	@RequestMapping(value = "/list")
 	public String doGet(Model model) {
-
-//		if (session.getAttribute("cart") == null) {
-//			session.setAttribute("message", "カートは空です");
-//		} else {
-//		session.removeAttribute("message");
-		var id = (ArrayList<Integer>) session.getAttribute("cart");
-		var items = cartRepository.findId(id);
+		var id = (int[]) session.getAttribute("cart");
+		var items = productRepository.findIdList(id);
 		model.addAttribute("cart", items);
 //		}
 //		System.out.println("session:" + list);
