@@ -9,6 +9,6 @@ echo ------- finish--------
 
 echo -------create table--------
 
-mysql --defaults-extra-file=root.conf --enable-local-infile < ./insert_product.sql
+mysql --defaults-extra-file=root.conf < insertSampleData.sql
 
 echo ------- finish--------
