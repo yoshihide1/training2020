@@ -31,9 +31,9 @@ CREATE TABLE `order_items` (
 -- training.orders definition
 CREATE TABLE `orders` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `number` varchar(8) DEFAULT NULL,
+  `number` varchar(14) DEFAULT NULL,
   `name` varchar(12) DEFAULT NULL,
   `address` text,
-  `date` date DEFAULT NULL,
+  `date` varchar(48) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
