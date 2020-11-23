@@ -4,9 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import com.example.training.enity.Product;
-
 public class Cart {
+	public static final String SESSION_NAME = "CART";
 	private List<CartItem> items = new ArrayList<CartItem>();
 
 	/**
@@ -53,7 +52,7 @@ public class Cart {
 		return items.size();
 	}
 
-	public List<CartItem> getList() {
+	public List<CartItem> getItems() {
 		return items;
 	}
 
@@ -65,6 +64,14 @@ public class Cart {
 			}
 		}
 		return Optional.empty();
+	}
+
+	public int getTotalAmount() {
+		int totalAmount = 0;
+		for (CartItem item : getItems()) {
+			totalAmount += item.getTotalAmount();
+		}
+		return totalAmount;
 	}
 
 }

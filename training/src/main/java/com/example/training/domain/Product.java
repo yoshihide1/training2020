@@ -1,15 +1,23 @@
-package com.example.training.enity;
-
+package com.example.training.domain;
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
 public class Product {
+
 	public Product(int id, String name) {
-		this.name = name;
 		this.id = id;
+		this.name = name;
+	}
+
+	public Product(int id, String name, int price) {
+		this.id = id;
+		this.name = name;
+		this.price = price;
+	}
+
+	public Product() {
+
 	}
 
 	private int id;
@@ -19,4 +27,3 @@ public class Product {
 	private String image_path;
 
 }
-

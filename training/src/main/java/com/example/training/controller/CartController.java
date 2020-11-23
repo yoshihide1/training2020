@@ -1,7 +1,5 @@
 package com.example.training.controller;
 
-import java.util.ArrayList;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.example.training.domain.Cart;
+import com.example.training.domain.Product;
 import com.example.training.repository.ProductRepository;
 
 /**
@@ -33,10 +33,9 @@ public class CartController {
 	 */
 	@RequestMapping(value = "/add/{id}", method = RequestMethod.GET)
 	public String add(@PathVariable int id) {
-		var items = (ArrayList<Integer>) session.getAttribute("cart");
-
-		items.add(0, id);
-		session.setAttribute("cart", items);
+		Cart cart = (Cart) session.getAttribute(Cart.SESSION_NAME);
+		Product product = productRepository.findId(id).orElseThrow();
+		cart.add(product);
 		return "redirect:/";
 	}
 
@@ -44,10 +43,13 @@ public class CartController {
 	 * @param id
 	 * @return カート内の商品の削除 //
 	 */
-//	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
-//	public String delete(@PathVariable int id) {
-//
-//	}
+	@RequestMapping(value = "/remove/{id}", method = RequestMethod.GET)
+	public String remove(@PathVariable int id) {
+		Cart cart = (Cart) session.getAttribute(Cart.SESSION_NAME);
+		Product product = productRepository.findId(id).orElseThrow();
+		cart.remove(product);
+		return "redirect:/cart/list";
+	}
 
 	/**
 	 * 商品一覧画面の表示
@@ -55,17 +57,14 @@ public class CartController {
 	 */
 	@RequestMapping(value = "/list")
 	public String doGet(Model model) {
-		var id = (int[]) session.getAttribute("cart");
-		var items = productRepository.findIdList(id);
-		model.addAttribute("cart", items);
-//		}
-//		System.out.println("session:" + list);
+		Cart cart = (Cart) session.getAttribute(Cart.SESSION_NAME);
+		model.addAttribute("cart", cart);
 		return "cart";
 	}
 
 	@RequestMapping(value = "/clear")
 	public String clear() {
-		session.removeAttribute("cart");
+		session.removeAttribute(Cart.SESSION_NAME);
 		return "redirect:/cart";
 	}
 

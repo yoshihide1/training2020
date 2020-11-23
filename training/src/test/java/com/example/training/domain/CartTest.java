@@ -9,8 +9,6 @@ import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 
-import com.example.training.enity.Product;
-
 class CartTest {
 
 	@Test
@@ -60,12 +58,12 @@ class CartTest {
 		Cart cart = new Cart();
 		cart.add(product);
 
-		List<CartItem> products = cart.getList();
+		List<CartItem> products = cart.getItems();
 		assertNotNull(products);
 		assertEquals(1, products.size());
 
 		cart.add(product2);
-		List<CartItem> products2 = cart.getList();
+		List<CartItem> products2 = cart.getItems();
 		assertEquals(2, products2.size());
 
 		cart.add(product);
@@ -76,6 +74,19 @@ class CartTest {
 		assertEquals(3, item.getQuantity());
 		cart.add(product, 3);
 		assertEquals(6, item.getQuantity());
+	}
+
+	@Test
+	void totalAmount() {
+		Product product1 = new Product(1, "ガム", 20);
+		Product product2 = new Product(2, "チョコ", 100);
+		Cart cart = new Cart();
+		cart.add(product1);
+		assertEquals(20, cart.getTotalAmount());
+		cart.add(product1);
+		assertEquals(40, cart.getTotalAmount());
+		cart.add(product2);
+		assertEquals(140, cart.getTotalAmount());
 	}
 
 }

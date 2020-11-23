@@ -9,8 +9,6 @@ import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 
-import com.example.training.enity.Product;
-
 public class NewCartTest {
 
 	@Test

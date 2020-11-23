@@ -1,7 +1,6 @@
 package com.example.training;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
@@ -13,6 +12,8 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import com.example.training.domain.Cart;
 
 @Component
 public class SessionFilter implements Filter {
@@ -27,17 +28,17 @@ public class SessionFilter implements Filter {
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
-		ArrayList<Integer> items = (ArrayList<Integer>) session.getAttribute("cart");
-		if (items == null) {
+		var cart = (Cart) session.getAttribute(Cart.SESSION_NAME);
+		if (cart == null) {
 			System.out.println("カート作成");
-			items = new ArrayList<Integer>();
-			session.setAttribute("cart", items);
+			cart = new Cart();
+			session.setAttribute(Cart.SESSION_NAME, cart);
 		} else {
 			System.out.println("作成済み");
 
 		}
 		chain.doFilter(request, response);
-		System.out.println(items);
+		System.out.println(cart);
 	}
 
 	@Override
