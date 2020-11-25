@@ -13,7 +13,7 @@
 <body>
     <div th:replace="header"></div>
     <div class="container">
-        <form action="/order/detail" th:object="${orderDetail}" method="post">
+        <form action="/order/save" th:object="${orderForm}" method="post">
             <div class="form-row">
                 <div class="form-group col">
                     <label for="last_name">姓<span class="badge badge-danger">必須</span>

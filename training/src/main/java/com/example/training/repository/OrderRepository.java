@@ -1,16 +1,21 @@
 package com.example.training.repository;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
-import com.example.training.domain.CartItem;
-import com.example.training.domain.OrderDetail;
+import com.example.training.domain.Order;
+import com.example.training.domain.OrderItem;
 
 @Mapper
 public interface OrderRepository {
 
-	void orderUserSave(OrderDetail orderDetail);
+	int save(Order order);
 
-	void orderProductSave(@Param("item") CartItem item, int orderId);
+	void saveItem(@Param("item") OrderItem item, int id);
 
+	Order findById(int id);
+
+	List<OrderItem> findItemByOrder(Order order);
 }

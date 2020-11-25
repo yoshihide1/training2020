@@ -1,24 +1,48 @@
 package com.example.training.domain;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import java.util.ArrayList;
+import java.util.List;
 
-import com.example.training.repository.OrderRepository;
+import lombok.Data;
 
-@Service
+@Data
 public class Order {
-	public static final String SESSION_NAME = "ORDER";
+	private int id;
+	private String name;
+	private String address;
+	private String email;
+	private String phone;
+	private int price;
+	private String date;
 
-	@Autowired
-	OrderRepository orderRepository;
-
-	public void orderPerson(OrderDetail orderDetail) {
-		orderRepository.orderUserSave(orderDetail);
+	public Order(OrderForm orderForm) {
+		this.name = orderForm.getFullName();
+		this.address = orderForm.getFullAddress();
+		this.email = orderForm.getEmail();
+		this.phone = orderForm.getPhone();
+		this.date = orderForm.getDate();
 	}
 
-	public void orderItem(Cart cart, int orderId) {
+	public Order() {
+	}
+
+	public List<OrderItem> createItem(Cart cart) {
+		List<OrderItem> results = new ArrayList<OrderItem>(cart.getSize());
 		for (CartItem item : cart.getItems()) {
-			orderRepository.orderProductSave(item, orderId);
+			results.add(new OrderItem(item));
 		}
+		return results;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
+	public void setPrice(Cart cart) {
+		int total = 0;
+		for (CartItem item : cart.getItems()) {
+			total += item.getTotalAmount();
+		}
+		this.price = total;
 	}
 }

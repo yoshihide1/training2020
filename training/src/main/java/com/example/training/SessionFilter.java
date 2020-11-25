@@ -33,9 +33,6 @@ public class SessionFilter implements Filter {
 			System.out.println("カート作成");
 			cart = new Cart();
 			session.setAttribute(Cart.SESSION_NAME, cart);
-		} else {
-			System.out.println("作成済み");
-
 		}
 		chain.doFilter(request, response);
 		System.out.println(cart);

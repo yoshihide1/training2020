@@ -11,7 +11,7 @@ import javax.validation.constraints.Size;
 import lombok.Data;
 
 @Data
-public class OrderDetail {
+public class OrderForm {
 	private int id;
 
 	@NotEmpty
@@ -46,5 +46,9 @@ public class OrderDetail {
 
 	public String getFullAddress() {
 		return this.address1 + this.address2;
+	}
+
+	public Order createOrder() {
+		return new Order(this);
 	}
 }
